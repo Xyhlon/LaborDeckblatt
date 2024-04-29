@@ -113,6 +113,8 @@
 	(up to 2 lines | set with \texttt{\textbackslash institute\{\}})}
 \newcommand{\institute}[1]{\def\@institute{#1}}
 
+\newcommand{\labname}[1]{\def\@labname{#1}}
+
 \newpairofpagestyles{firstpage}{%
 	\setkomafont{pageheadfoot}{\normalfont}
 	\ihead{
@@ -168,23 +170,26 @@
 \fi
 
 {\fontsize{16pt}{18pt}\selectfont \underLine{\@institute} \par}
-
-\iftugraz@EXEINS
-	{\bfseries\fontsize{36pt}{38pt}\selectfont Labor{\"{u}}bungen 1: Mechanik, W{\"{a}}rme \par}
+\ifx\@labname\undefined
+	\iftugraz@EXEINS
+		{\bfseries\fontsize{36pt}{38pt}\selectfont Labor{\"{u}}bungen 1: Mechanik, W{\"{a}}rme \par}
+	\fi
+	\iftugraz@EXZWEI
+		{\bfseries\fontsize{36pt}{38pt}\selectfont Labor{\"{u}}bungen 2: Elektrizit{\"{a}}t, Magnetismus, Optik \par}
+	\fi
+	\iftugraz@FPEINS
+		{\bfseries\fontsize{28pt}{30pt}\selectfont Fortgeschrittenenpraktikum 1 \par}
+	\fi
+	\iftugraz@FPZWEI
+		{\bfseries\fontsize{28pt}{30pt}\selectfont Fortgeschrittenenpraktikum 2 \par}
+	\fi
+	\iftugraz@ECM
+		{\bfseries\fontsize{36pt}{38pt}\selectfont  Labor{\"{u}}bungen: Elektronik und Computerunterst{\"{u}}tzte Messtechnik \par}
+	\fi
+	% \ifthenelse{\tugraz@EXEINS \OR \tugraz@ECM}{lol}{\@reporttitle \par}
+\else
+	{\bfseries\fontsize{36pt}{38pt}\selectfont \@labname \par}
 \fi
-\iftugraz@EXZWEI
-	{\bfseries\fontsize{36pt}{38pt}\selectfont Labor{\"{u}}bungen 2: Elektrizit{\"{a}}t, Magnetismus, Optik \par}
-\fi
-\iftugraz@FPEINS
-	{\bfseries\fontsize{28pt}{30pt}\selectfont Fortgeschrittenenpraktikum 1 \par}
-\fi
-\iftugraz@FPZWEI
-	{\bfseries\fontsize{28pt}{30pt}\selectfont Fortgeschrittenenpraktikum 2 \par}
-\fi
-\iftugraz@ECM
-	{\bfseries\fontsize{36pt}{38pt}\selectfont  Labor{\"{u}}bungen: Elektronik und Computerunterst{\"{u}}tzte Messtechnik \par}
-\fi
-
 % \iftugraz@EXEINS
 % 	{\bfseries\scshape\fontsize{36pt}{38pt}\selectfont Labor{\"{u}}bungen 1: Mechanik, W{\"{a}}rme \par}
 % \fi
@@ -200,7 +205,6 @@
 % \iftugraz@ECM
 % 	{\bfseries\scshape\fontsize{36pt}{38pt}\selectfont  Labor{\"{u}}bungen: Elektronik und Computerunterst{\"{u}}tzte Messtechnik \par}
 % \fi
-
 \directlua{require('parser.lua')}
 \begin{table*}[!b]
 	\begin{tblr}[expand=\directlua]{colspec={X[1,l]X[1,r]X[1,c]X[1,c]X[1,c]X[1,c]},
@@ -226,7 +230,6 @@
 		\directlua{printAuthors("./author.json")}
 	\end{tblr}
 \end{table*}
-
 }
 \cleardoublepage{}
 }
