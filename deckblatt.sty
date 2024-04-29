@@ -141,9 +141,12 @@
 	}
 }
 
+\RequirePackage{silence}
+\WarningFilter{scrlayer-scrpage}{\headheight to low.}
+
 %%%   TITLEPAGE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \@ifpackageloaded{geometry}{}{\RequirePackage[pass,includehead,]{geometry}}
-
+% \KOMAoptions{headwidth=paper:-\oddsidemargin-1in}
 % Titlepage
 \newcommand{\printTitlePage}{%
 \cleardoublepage{}
