@@ -32,29 +32,6 @@
 \newif\iftugraz@iaik\tugraz@iaikfalse
 \DeclareOption{iaik}{\tugraz@iaiktrue}
 
-\newif\iftugraz@claim\tugraz@claimfalse
-\DeclareOption{claim}{\tugraz@claimtrue}
-
-\newif\iftugraz@diplom\tugraz@diplomfalse
-\DeclareOption{diplom}{\tugraz@diplomtrue\tugraz@mscfalse\tugraz@phdfalse}
-
-\newif\iftugraz@msc\tugraz@mscfalse
-\DeclareOption{msc}{\tugraz@msctrue\tugraz@diplomfalse\tugraz@phdfalse}
-
-\newif\iftugraz@phd\tugraz@phdfalse
-\DeclareOption{phd}{\tugraz@phdtrue\tugraz@mscfalse\tugraz@diplomfalse}
-
-\newif\iftugraz@individual\tugraz@individualfalse
-\DeclareOption{individual}{\tugraz@individualtrue}
-
-\newif\iftugraz@informal\tugraz@informalfalse
-
-\newif\iftugraz@bsc\tugraz@bscfalse
-\DeclareOption{bsc}{\tugraz@bsctrue\tugraz@informaltrue\tugraz@mscfalse\tugraz@diplomfalse\tugraz@phdfalse}
-
-\newif\iftugraz@project\tugraz@projectfalse
-\DeclareOption{project}{\tugraz@projecttrue\tugraz@informaltrue\tugraz@bscfalse\tugraz@mscfalse\tugraz@diplomfalse\tugraz@phdfalse}
-
 \ifdefined\usefamilyofkomafont
 	\def\tugraz@titlefont{\usefamilyofkomafont{disposition}}
 \else
@@ -91,8 +68,6 @@
 \RequirePackage{luacode}
 
 %%%   METADATA   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \def\@protocolgroupnumber{\@groupnumber}
-% \newcommand{\protocolgroupnumber}[2][]{\def\@protocolgroupnumber{#2}\if\relax\detokenize{#1}\relax\groupnumber{#2}\else\groupnumber{#1}\fi}
 \def\@thesisauthor{\@author}
 \newcommand{\thesisauthor}[2][]{\def\@thesisauthor{#2}\if\relax\detokenize{#1}\relax\author{#2}\else\author{#1}\fi}
 \def\@authorMatriculationNumber{69000420}
